@@ -182,7 +182,7 @@ do -- Client Functions
                             },
                             Body = SynDiscord.Utils:JSONEncode(t)
                         })
-                        --return res.Body
+                        return res.Body
                     end
                 end
 
@@ -196,7 +196,7 @@ do -- Client Functions
         end)
 
         task.spawn(function() -- needed to keep the websocket client alive. so it doesnt just shut down after 30 seconds or so
-            while task.wait(5) do
+            while task.wait(15) do
                 client:Send(SynDiscord.Utils:JSONEncode({
                     op = 1,
                     d = 251

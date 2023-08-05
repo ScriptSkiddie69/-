@@ -183,6 +183,7 @@ do -- Client Functions
                             Body = SynDiscord.Utils:JSONEncode(t)
                         })
                         return res.Body
+                        wait(9e9)
                     end
                 end
 

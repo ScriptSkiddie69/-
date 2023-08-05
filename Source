@@ -1,4 +1,4 @@
---not made by me i modified it though, credits ou1z from v3rmillion --
+--credits ou1z from v3rmillion modified by gaming
 
 if not websocket or not websocket then
     return game.Players.LocalPlayer:Kick('Your exploit does not support websockets.')
@@ -160,7 +160,7 @@ do -- Client Functions
                         return res.Body 
                     end
 
-                      function message.reply(content, tbl)
+                    function message.reply(content, tbl)
                         local t = {
                             content = content,
                             message_reference = {
@@ -196,7 +196,7 @@ do -- Client Functions
         end)
 
         task.spawn(function() -- needed to keep the websocket client alive. so it doesnt just shut down after 30 seconds or so
-            while task.wait(15) do
+            while task.wait(5) do
                 client:Send(SynDiscord.Utils:JSONEncode({
                     op = 1,
                     d = 251
@@ -313,4 +313,3 @@ do
 end
 
 return SynDiscord
-

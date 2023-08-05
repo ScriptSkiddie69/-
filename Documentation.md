@@ -9,7 +9,7 @@ local LuaSelfbot = loadstring(game:HttpGet('https://raw.githubusercontent.com/Sc
 local LuaSelfbot = loadstring(game:HttpGet('https://raw.githubusercontent.com/ScriptSkiddie69/-/main/Source'))()
 local Client = LuaSelfbot.Client.new()
 ```
-## Client ready event
+## Client on ready event
 ```lua
 local LuaSelfbot = loadstring(game:HttpGet('https://raw.githubusercontent.com/ScriptSkiddie69/-/main/Source'))()
 local Client = LuaSelfbot.Client.new()

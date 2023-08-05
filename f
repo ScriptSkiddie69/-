@@ -161,30 +161,37 @@ do -- Client Functions
                     end
 
                     function message.reply(content, tbl)
-                        local t = {
-                            content = content,
-                            message_reference = {
-                                channel_id = message.channel.id,
-                                guild_id = message.guild_id,
-                                message_id = message.id
-                            }
-                        }
-                        if tbl then
-                            for i,v in pairs(tbl) do
-                                t[i] = v
-                            end
-                        end
-                        local res = self:Request({
-                            Url = SynDiscord.API_ROOT .. string.format('channels/%s/messages', message.channel_id),
-                            Method = 'POST',
-                            Headers = {
-                                ['Content-Type'] = 'application/json'  
-                            },
-                            Body = SynDiscord.Utils:JSONEncode(t)
-                        })
-                        return res.Body
-                    end
-                end
+    local t = {
+        content = content,
+        message_reference = {
+            channel_id = message.channel.id,
+            guild_id = message.guild_id,
+            message_id = message.id
+        }
+    }
+    if tbl then
+        for i,v in pairs(tbl) do
+            t[i] = v
+        end
+    end
+
+    local res = self:Request({
+        Url = SynDiscord.API_ROOT .. string.format('channels/%s/messages', message.channel_id),
+        Method = 'POST',
+        Headers = {
+            ['Content-Type'] = 'application/json'  
+        },
+        Body = SynDiscord.Utils:JSONEncode(t)
+    })
+
+    if res.Success then
+        return res.Body
+    else
+        print("Error while replying to message:")
+        print(res.StatusCode, res.StatusMessage, res.Body)
+        return nil
+    end
+end
 
                 local Listeners = self.__meta__.EventListeners[Event]
                 if Listeners then
